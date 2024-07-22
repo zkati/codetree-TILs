@@ -26,12 +26,22 @@ int main() {
 	// 2) n > m 아래로 길쭉한 직사각형
 	else if (n > m) {
 		for (int i = 0; i < n + m - 1; i++) {
-			if (i == 0) {
-				arr[0][0] = num;
-				num++;
+			if (i < n) {
+				if (i <= m - 1) {
+					for (int j = i; j >= 0; j--) {
+						arr[i - j][j] = num;
+						num++;
+					}
+				}
+				else {
+					for (int j = m - 1; j >= 0; j--) {
+						arr[i - j][j] = num;
+						num++;
+					}
+				}
 			}
 			else {
-				for (int j = m - 1; i - j <= i; j--) {
+				for (int j = m - 1; i - j < n; j--) {
 					arr[i - j][j] = num;
 					num++;
 				}
